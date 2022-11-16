@@ -4,7 +4,11 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
-  const theme = createTheme();
+  const theme = createTheme({
+    palette: {
+      // mode: 'dark',
+    },
+  });
 
   return (
     <>
