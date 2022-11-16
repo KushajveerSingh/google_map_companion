@@ -1,3 +1,5 @@
+import type { TypePlacesApi } from "../";
+
 export interface TypePlaceDetailsProps {
-  place: any;
+  place: TypePlacesApi;
 }

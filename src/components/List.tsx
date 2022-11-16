@@ -12,23 +12,12 @@ import { useTheme } from '@mui/material/styles';
 import { useState } from 'react';
 
 import { PlaceDetails } from './';
+import type { TypeListProps } from '../@types';
 
-const List = () => {
+const List = ({ places }: TypeListProps) => {
   const theme = useTheme();
   const [value, setValue] = useState('restaurants');
   const [rating, setRating] = useState('');
-
-  const places = [
-    { name: 'Cool place' },
-    { name: 'Best beer' },
-    { name: 'Best Steak' },
-    { name: 'Cool place' },
-    { name: 'Best beer' },
-    { name: 'Best Steak' },
-    { name: 'Cool place' },
-    { name: 'Best beer' },
-    { name: 'Best Steak' },
-  ];
 
   return (
     <Box sx={{ padding: '25px' }}>
