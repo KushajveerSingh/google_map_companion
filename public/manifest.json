@@ -1,0 +1,11 @@
+{
+  "name": "Google Map Companion",
+  "short_name": "youtube_video_platform",
+  "description": "",
+  "theme_color": "#42a5f5",
+  "background_color": "#42a5f5",
+  "display": "standalone",
+  "orientation": "landscape",
+  "scope": "/",
+  "start_url": "/"
+}
