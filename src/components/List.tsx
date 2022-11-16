@@ -1,3 +1,4 @@
+// 1:31:59 (set type of childCliked also)
 import {
   CircularProgress,
   Grid,
@@ -9,12 +10,12 @@ import {
   Box,
 } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { PlaceDetails } from './';
 import type { TypeListProps } from '../@types';
 
-const List = ({ places }: TypeListProps) => {
+const List = ({ places, childClicked }: TypeListProps) => {
   const theme = useTheme();
   const [value, setValue] = useState('restaurants');
   const [rating, setRating] = useState('');

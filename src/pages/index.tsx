@@ -9,14 +9,16 @@ import type { TypePlacesApi, TypeBounds } from '../@types';
 const initialCoords: TypeCoords = { lat: 0, lng: 0 };
 
 const Home = () => {
-  const [coordsLoaded, setCoordsLoaded] = useState(false);
   const [places, setPlaces] = useState<TypePlacesApi[]>([]);
+
+  const [coordsLoaded, setCoordsLoaded] = useState(false);
   const [coordinates, setCoordinates] = useState<TypeCoords>(initialCoords);
   const [bounds, setBounds] = useState<TypeBounds>({
     ne: initialCoords,
     sw: initialCoords,
   });
 
+  const [childClicked, setChildClicked] = useState(null);
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(({ coords }) => {
       setCoordinates({ lat: coords.latitude, lng: coords.longitude });
@@ -26,10 +28,9 @@ const Home = () => {
 
   useEffect(() => {
     getPlacesData(bounds.sw, bounds.ne).then((data) => {
-      console.log(data);
       setPlaces(data);
     });
-  }, [coordinates, bounds]);
+  }, [coordsLoaded, coordinates, bounds]);
 
   return (
     <div>
@@ -39,7 +40,7 @@ const Home = () => {
 
       <Grid container spacing={3} style={{ width: '100%' }}>
         <Grid item xs={12} md={4}>
-          <List places={places} />
+          <List places={places} childClicked={childClicked} />
         </Grid>
 
         <Grid item xs={12} md={8}>
@@ -48,6 +49,8 @@ const Home = () => {
               coordinates={coordinates}
               setCoordinates={setCoordinates}
               setBounds={setBounds}
+              places={places}
+              setChildClicked={setChildClicked}
             />
           )}
         </Grid>

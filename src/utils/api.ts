@@ -8,9 +8,9 @@ export const getPlacesData = async (sw: Coords, ne: Coords) => {
       {
         params: {
           bl_latitude: sw.lat,
-          tr_latitude: ne.lng,
           bl_longitude: sw.lng,
           tr_longitude: ne.lng,
+          tr_latitude: ne.lat,
         },
         headers: {
           'X-RapidAPI-Key': process.env.NEXT_PUBLIC_TRAVEL_ADVISOR_KEY,

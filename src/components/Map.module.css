@@ -1,0 +1,9 @@
+.markerContainer {
+  position: absolute;
+  transform: 'translate(-50%, -50%)';
+  z-index: 1;
+}
+
+.markerContainer:hover {
+  z-index: 2;
+}
