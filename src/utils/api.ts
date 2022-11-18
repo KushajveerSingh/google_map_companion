@@ -1,10 +1,10 @@
 import axios from 'axios';
 import type { Coords } from 'google-map-react';
 
-export const getPlacesData = async (sw: Coords, ne: Coords) => {
+export const getPlacesData = async (value: string, sw: Coords, ne: Coords) => {
   try {
     const { data: { data } } = await axios.get(
-      'https://travel-advisor.p.rapidapi.com/restaurants/list-in-boundary',
+      `https://travel-advisor.p.rapidapi.com/${value}/list-in-boundary`,
       {
         params: {
           bl_latitude: sw.lat,

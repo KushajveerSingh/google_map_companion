@@ -14,16 +14,16 @@ import { useState, useEffect, createRef } from 'react';
 import { PlaceDetails } from './';
 import type { TypeListProps } from '../@types';
 
-const List = ({ places, childClicked, isLoading }: TypeListProps) => {
+const List = ({
+  places,
+  childClicked,
+  isLoading,
+  value,
+  setValue,
+  rating,
+  setRating,
+}: TypeListProps) => {
   const theme = useTheme();
-  const [value, setValue] = useState('restaurants');
-  const [rating, setRating] = useState('');
-
-  // const [elRefs, setElRefs] = useState<any[]>([]);
-
-  // useEffect(() => {
-  //   setElRefs((refs) => Array(places?.length).map((_, i) => refs[i] || createRef()));
-  // }, [places]);
 
   return (
     <Box sx={{ padding: '25px' }}>
