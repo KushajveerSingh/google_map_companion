@@ -2,5 +2,6 @@ import type { TypePlacesApi } from "../";
 
 export interface TypeListProps {
   places: TypePlacesApi[];
-  childClicked: any;
+  childClicked: string | null;
+  isLoading: boolean;
 }
