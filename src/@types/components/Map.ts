@@ -1,5 +1,5 @@
 import type { Coords } from "google-map-react";
-import type { TypePlacesApi } from "../";
+import type { TypePlacesApi, TypeWeatherData } from "../";
 
 export interface TypeMapProps {
   coordinates: Coords;
@@ -7,4 +7,5 @@ export interface TypeMapProps {
   setBounds: Function;
   places: TypePlacesApi[];
   setChildClicked: Function;
+  weatherData: TypeWeatherData;
 }

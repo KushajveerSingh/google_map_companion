@@ -2,15 +2,16 @@ import { useEffect, useState } from 'react';
 import { Grid, Typography } from '@mui/material';
 
 import { Header, List, Map, MetaHead } from '../components';
-import { getPlacesData } from '../utils/api';
+import { getPlacesData, getWeatherData } from '../api';
 import type { Coords as TypeCoords } from 'google-map-react';
-import type { TypePlacesApi, TypeBounds } from '../@types';
+import type { TypePlacesApi, TypeBounds, TypeWeatherData } from '../@types';
 
 const initialCoords: TypeCoords = { lat: 0, lng: 0 };
 
 const Home = () => {
   const [places, setPlaces] = useState<TypePlacesApi[]>([]);
   const [filteredPlaces, setFilteredPlaces] = useState<TypePlacesApi[]>([]);
+  const [weatherData, setWeatherData] = useState<TypeWeatherData>([]);
 
   const [coordsLoaded, setCoordsLoaded] = useState(false);
   const [coordinates, setCoordinates] = useState<TypeCoords>(initialCoords);
@@ -40,6 +41,10 @@ const Home = () => {
   useEffect(() => {
     if (bounds.sw.lat != 0 && bounds.sw.lng != 0) {
       setIsLoading(true);
+
+      getWeatherData(coordinates.lat, coordinates.lng, bounds).then((data) =>
+        setWeatherData(data)
+      );
 
       getPlacesData(value, bounds.sw, bounds.ne)
         .then((data) => {
@@ -84,6 +89,7 @@ const Home = () => {
               setBounds={setBounds}
               places={filteredPlaces.length ? filteredPlaces : places}
               setChildClicked={setChildClicked}
+              weatherData={weatherData}
             />
           )}
         </Grid>

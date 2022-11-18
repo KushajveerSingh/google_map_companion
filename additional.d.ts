@@ -3,5 +3,6 @@ declare namespace NodeJS {
     NEXT_PUBLIC_BASE_URL: string;
     NEXT_PUBLIC_GOOGLE_MAP_API_KEY: string;
     NEXT_PUBLIC_TRAVEL_ADVISOR_KEY: string;
+    NEXT_PUBLIC_WEATHER_API_KEY: string;
   }
 }
