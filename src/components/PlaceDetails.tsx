@@ -52,8 +52,8 @@ const PlaceDetails = ({ place }: TypePlaceDetailsProps) => {
           </Typography>
         </Box>
 
-        {place?.awards?.map((award) => (
-          <Box my={1} display="flex" justifyContent="space-between">
+        {place?.awards?.map((award, index) => (
+          <Box key={index} my={1} display="flex" justifyContent="space-between">
             <img src={award.images.small} alt={award.display_name} />
             <Typography variant="subtitle2" color="textSecondary">
               {award.display_name}
