@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { AppProps } from 'next/app';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
+import { GoogleMap, LoadScript } from '@react-google-maps/api';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   const theme = createTheme({
@@ -17,7 +18,12 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Component {...pageProps} />
+        <LoadScript
+          googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY}
+          libraries={['geometry', 'drawing', 'places']}
+        >
+          <Component {...pageProps} />
+        </LoadScript>
       </ThemeProvider>
     </>
   );

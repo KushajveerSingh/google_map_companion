@@ -38,21 +38,30 @@ const Home = () => {
   }, [rating]);
 
   useEffect(() => {
-    setIsLoading(true);
+    if (bounds.sw.lat != 0 && bounds.sw.lng != 0) {
+      setIsLoading(true);
 
-    getPlacesData(value, bounds.sw, bounds.ne)
-      .then((data) => {
-        setPlaces(data);
-        setFilteredPlaces([]);
-      })
-      .finally(() => setIsLoading(false));
-  }, [value, coordsLoaded, coordinates, bounds]);
+      getPlacesData(value, bounds.sw, bounds.ne)
+        .then((data) => {
+          if (data) {
+            setPlaces(
+              data.filter(
+                (place: TypePlacesApi) =>
+                  place.name && place.num_reviews && +place.num_reviews > 0
+              )
+            );
+          }
+          setFilteredPlaces([]);
+        })
+        .finally(() => setIsLoading(false));
+    }
+  }, [value, bounds]);
 
   return (
     <div>
       <MetaHead title="Map Companion" />
 
-      <Header />
+      <Header setCoordinates={setCoordinates} />
 
       <Grid container spacing={3} style={{ width: '100%' }}>
         <Grid item xs={12} md={4}>
