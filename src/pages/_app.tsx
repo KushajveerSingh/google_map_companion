@@ -1,15 +1,12 @@
+import { useState } from 'react';
 import Head from 'next/head';
 import { AppProps } from 'next/app';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
-import { GoogleMap, LoadScript } from '@react-google-maps/api';
+import { LoadScript } from '@react-google-maps/api';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
-  const theme = createTheme({
-    palette: {
-      // mode: 'dark',
-    },
-  });
+  const theme = createTheme({});
 
   return (
     <>

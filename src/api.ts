@@ -1,10 +1,13 @@
 import axios from 'axios';
 import type { Coords } from 'google-map-react';
 import type { TypeBounds, TypeWeatherData } from './@types';
+import type { AxiosError } from 'axios';
 
 export const getPlacesData = async (value: string, sw: Coords, ne: Coords) => {
   try {
-    const { data: { data } } = await axios.get(
+    const {
+      data: { data },
+    } = await axios.get(
       `https://travel-advisor.p.rapidapi.com/${value}/list-in-boundary`,
       {
         params: {
@@ -15,13 +18,20 @@ export const getPlacesData = async (value: string, sw: Coords, ne: Coords) => {
         },
         headers: {
           'X-RapidAPI-Key': process.env.NEXT_PUBLIC_TRAVEL_ADVISOR_KEY,
-          'X-RapidAPI-Host': 'travel-advisor.p.rapidapi.com'
-        }
+          'X-RapidAPI-Host': 'travel-advisor.p.rapidapi.com',
+        },
       }
-    )
+    );
     return data;
-  } catch (error) {
-    console.log(error);
+  } catch (error: unknown | AxiosError) {
+    if (axios.isAxiosError(error)) {
+      if (error.response?.status == 429) {
+        return 'err';
+      }
+      // console.log(error.response?.status);
+    } else {
+      console.log(error);
+    }
   }
 };
 
@@ -35,16 +45,18 @@ const getRandomCoords = (start: number, end: number, numCoords: number) => {
 
 const weatherQuery = async (lat: number, lng: number) => {
   try {
-    const { data } = await axios.get('https://weatherapi-com.p.rapidapi.com/current.json',
+    const { data } = await axios.get(
+      'https://weatherapi-com.p.rapidapi.com/current.json',
       {
         params: {
-          q: `${lat},${lng}`
+          q: `${lat},${lng}`,
         },
         headers: {
           'X-RapidAPI-Key': process.env.NEXT_PUBLIC_WEATHER_API_KEY,
-          'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
-        }
-      });
+          'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com',
+        },
+      }
+    );
     return `https://${data['current']['condition']['icon']}`;
   } catch (error) {
     console.log(error);
@@ -52,7 +64,12 @@ const weatherQuery = async (lat: number, lng: number) => {
   return -1;
 };
 
-export const getWeatherData = async (lat: number, lng: number, bounds: TypeBounds, numCoords: number = 5) => {
+export const getWeatherData = async (
+  lat: number,
+  lng: number,
+  bounds: TypeBounds,
+  numCoords: number = 5
+) => {
   const lats = getRandomCoords(bounds.sw.lat, bounds.ne.lat, numCoords);
   const lngs = getRandomCoords(bounds.sw.lng, bounds.ne.lng, numCoords);
 
@@ -65,9 +82,9 @@ export const getWeatherData = async (lat: number, lng: number, bounds: TypeBound
     const d = await weatherQuery(lats[i], lngs[i]);
 
     if (typeof d == 'string') {
-      data.push([lats[i], lngs[i], d])
+      data.push([lats[i], lngs[i], d]);
     }
   }
 
   return data;
-}
+};
