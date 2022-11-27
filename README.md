@@ -3,17 +3,32 @@
 
 ![](assets/demo_image.png)
 
-Fully-responsive travel companion and weather checking app built by combining Google Maps API, Travel Advisor API and WeatherAPI.com. Built using Next.js and TypeScript, this app can be used to search for places, fetch restaurant, hotels and attractions based on location.
+Fully-responsive travel companion and weather checking app built by combining **Google Maps API**, **Travel Advisor API** and **WeatherAPI.com**. Built using Next.js and TypeScript, this app can be used to search for places, fetch restaurant, hotels and attractions based on location.
 
 ## Table of Contents
 - [Demo Videos](#demo-videos)
-    - as
+    - [Desktop demo](#desktop-demo)
+    - [Mobile demo](#mobile-demo)
+    - [API not working demo](#api-not-working-demo)
 - [Dependencies](#dependencies)
 - [Local Setup](#local-setup)
+    - [Node.js and repository setup](#nodejs-and-respository-setup)
+    - [Travel Advisor API setup](#travel-advisor-api-setup)
+    - [Weather API setup](#weather-api-setup)
+    - [Google Maps Setup](#google-maps-setup)
 - [License](#license)
 
 ## Demo Videos
 
+### Desktop demo
+- check the weather at different location
+- search for the restaurants and attractions
+- filter by ratings
+
+### Mobile demo
+
+### API not working demo
+This project uses "Travel Advisor API" which provides 500 requests per month for free. If this happens, a dialog is shown giving more information about this and the user can still check the weather and search for places on the google maps.
 
 ## Dependencies
 - [React](https://reactjs.org/)
