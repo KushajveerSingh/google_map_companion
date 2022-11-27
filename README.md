@@ -25,10 +25,16 @@ Fully-responsive travel companion and weather checking app built by combining **
 - search for the restaurants and attractions
 - filter by ratings
 
+https://user-images.githubusercontent.com/24699564/204117472-3becce24-960d-46a0-a69e-cbac87a48b09.mp4
+
 ### Mobile demo
+
+https://user-images.githubusercontent.com/24699564/204117473-dc38c893-9cfd-444f-a09a-05564ab72d2b.mp4
 
 ### API not working demo
 This project uses "Travel Advisor API" which provides 500 requests per month for free. If this happens, a dialog is shown giving more information about this and the user can still check the weather and search for places on the google maps.
+
+https://user-images.githubusercontent.com/24699564/204117471-4424f4ea-c369-48cd-8a01-2d9db6940227.mp4
 
 ## Dependencies
 - [React](https://reactjs.org/)
