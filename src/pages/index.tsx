@@ -9,7 +9,7 @@ import {
   Button,
 } from '@mui/material';
 
-import { Header, List, Map, MetaHead } from '../components';
+import { Header, List, Map, MetaTags } from '../components';
 import { getPlacesData, getWeatherData } from '../api';
 import type { Coords as TypeCoords } from 'google-map-react';
 import type { TypePlacesApi, TypeBounds, TypeWeatherData } from '../@types';
@@ -77,7 +77,12 @@ const Home = () => {
 
   return (
     <>
-      <MetaHead title="Map Companion" />
+      <MetaTags
+        title="Map Companion"
+        description="Fully-responsive travel companion and weather checking app built by combining Google Maps API, Travel Advisor API and WeatherAPI.com. Built using Next.js and TypeScript, this app can be used to search for places, fetch restaurant, hotels and attractions based on location."
+        url="https://github.com/KushajveerSingh/google_map_companion"
+        image="/demo_image.png"
+      />
 
       <Header setCoordinates={setCoordinates} />
 

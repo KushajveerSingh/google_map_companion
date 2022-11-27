@@ -1,6 +1,18 @@
 import { useState } from 'react';
 import { Autocomplete } from '@react-google-maps/api';
-import { AppBar, Toolbar, Typography, InputBase, Box } from '@mui/material';
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  InputBase,
+  Box,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  DialogActions,
+  Button,
+} from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import { useTheme, alpha, styled } from '@mui/material/styles';
 import type { TypeHeaderProps } from '../@types';
@@ -50,6 +62,7 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
 const Header = ({ setCoordinates }: TypeHeaderProps) => {
   const theme = useTheme();
   const [autoComplete, setAutoComplete] = useState<any>(null);
+  const [showDialog, setShowDialog] = useState<boolean>(false);
 
   const onLoad = (autoC: any) => setAutoComplete(autoC);
 
@@ -60,9 +73,7 @@ const Header = ({ setCoordinates }: TypeHeaderProps) => {
         const lng = autoComplete.getPlace().geometry.location.lng();
         setCoordinates({ lat, lng });
       } else {
-        alert(
-          'The name you entered in the search box is incorrect. Please, select a correct value from the drop-down menu as you type'
-        );
+        setShowDialog(true);
       }
     }
   };
@@ -102,6 +113,22 @@ const Header = ({ setCoordinates }: TypeHeaderProps) => {
           </Box>
         </Toolbar>
       </AppBar>
+
+      <Dialog
+        open={showDialog}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">{'Invalid search name'}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            {`The name you entered in the search box is incorrect. Please, select a correct value from the drop-down menu as you type.`}
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => setShowDialog(false)}>Close</Button>
+        </DialogActions>
+      </Dialog>
     </Box>
   );
 };

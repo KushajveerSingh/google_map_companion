@@ -1,7 +1,7 @@
 {
   "name": "Google Map Companion",
   "short_name": "google_map_companion",
-  "description": "",
+  "description": "Fully-responsive travel companion and weather checking app built by combining Google Maps API, Travel Advisor API and WeatherAPI.com. Built using Next.js and TypeScript, this app can be used to search for places, fetch restaurant, hotels and attractions based on location.",
   "theme_color": "#42a5f5",
   "background_color": "#42a5f5",
   "display": "standalone",

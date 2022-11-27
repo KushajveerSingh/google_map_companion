@@ -1,7 +1,7 @@
 import Head from 'next/head';
-import type { TypeMetaHeadProps } from '../@types';
+import type { TypeMetaTagsProps } from '../@types';
 
-const MetaHead = (props: TypeMetaHeadProps) => {
+const MetaTags = (props: TypeMetaTagsProps) => {
   const { title, description, url, image, children } = props;
   const fullUrl = url
     ? process.env.NEXT_PUBLIC_BASE_URL + url
@@ -44,4 +44,4 @@ const MetaHead = (props: TypeMetaHeadProps) => {
   );
 };
 
-export default MetaHead;
+export default MetaTags;
