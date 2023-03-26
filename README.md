@@ -117,7 +117,7 @@ A video demo of the above is shown below.
 https://user-images.githubusercontent.com/24699564/204116954-4e37a274-6639-4160-8086-3ca8d6ab2d8a.mp4
 
 ### Development and deployment instructions
-**Step 1**. Run `make run dev` to start the local development server at `localhost:3000`. Now you can customize the application as per your needs.
+**Step 1**. Run `npm run dev` to start the local development server at `localhost:3000`. Now you can customize the application as per your needs.
 
 **Step 2**. After making the desired changes, you can push your project to GitHub and you are ready for deployment on [Vercel](https://vercel.com/)
 
