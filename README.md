@@ -3,7 +3,9 @@
 
 ![](assets/demo_image.png)
 
-Fully-responsive travel companion and weather checking app built by combining **Google Maps API**, **Travel Advisor API** and **WeatherAPI.com**. Built using Next.js and TypeScript, this app can be used to search for places, fetch restaurant, hotels and attractions based on location.
+- Developed a Travel Companion Application utilizing Google Maps API, Geolocation, and advanced React/Next.js and TypeScript practices, leading to seamless user experience and efficient data handling. Also, gained proficiency in using Google Cloud Platform (GCP) for API setup and management.
+- Used Material-UI for creating the interface and leveraged Travel Advisor API to fetch location-specific data on restaurants, hotels, and attractions for a highly personalized user experience, including filtering of locations based on ratings.
+- Ensured app security and maintainability with environment variables, hooks, refs, and a well-organized folder structure, resulting in a highly scalable and deployable project on Vercel.
 
 ## Table of Contents
 - [Demo Videos](#demo-videos)
